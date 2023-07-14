@@ -49,6 +49,8 @@ emotion_dict = {0: "Angry", 1: "Fearful", 2: "Happy", 3: "Neutral",
 model = EmotionNet(num_of_channels=1, num_of_classes=len(emotion_dict))
 # model_weights = torch.load(args["model"])
 model_weights = torch.load(cfg.model)
+# load weight from cuda pretrained
+# model_weights = torch.load(cfg.model,map_location=torch.device('cpu'))
 model.load_state_dict(model_weights)
 model.to(device)
 model.eval()
